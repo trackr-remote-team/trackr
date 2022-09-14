@@ -57,7 +57,7 @@ module.exports = {
             publicPath: '/build',
         },
         proxy: {
-            '/': 'http://localhost:5137'
+            '/*': 'http://localhost:5137'
         }
     }
 }
