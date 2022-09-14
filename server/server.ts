@@ -1,5 +1,4 @@
 import express, { Application, NextFunction, Request, Response } from "express";
-const path = require('path');
 
 const app: Application = express();
 
