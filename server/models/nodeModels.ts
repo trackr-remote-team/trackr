@@ -17,8 +17,8 @@ const trackrDB = new sqlite3.Database(
 
 if (!dbExists) {
   const createJobSQL = 'CREATE TABLE job (id INTEGER PRIMARY KEY AUTOINCREMENT, position TEXT NOT NULL, company TEXT NOT NULL, outcome TEXT NOT NULL)';
-  const createInterviewSQL = 'CREATE TABLE interview (id INTEGER PRIMARY KEY AUTOINCREMENT, type TEXT NOT NULL, date DATE, FOREIGN KEY (job_id) REFERENCES job (id))';
-  const createCommentSQL = 'CREATE TABLE comment (id INTEGER PRIMARY KEY AUTOINCREMENT, note TEXT NOT NULL, FOREIGN KEY (job_id) REFERENCES job (id), FOREIGN KEY (interview_id) REFERENCES interview (id))';
+  const createInterviewSQL = 'CREATE TABLE interview (id INTEGER PRIMARY KEY AUTOINCREMENT, job_id INTEGER, type TEXT NOT NULL, date DATE, FOREIGN KEY (job_id) REFERENCES job (id))';
+  const createCommentSQL = 'CREATE TABLE comment (id INTEGER PRIMARY KEY AUTOINCREMENT, job_id INTEGER, interview_id INTEGER, note TEXT NOT NULL, FOREIGN KEY (job_id) REFERENCES job (id), FOREIGN KEY (interview_id) REFERENCES interview (id))';
 
   trackrDB.run(createJobSQL, (err) => {
     if (err) {
