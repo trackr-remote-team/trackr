@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: '',
+    entry: './client/index.tsx',
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'index.bundle.js',
@@ -10,7 +10,7 @@ module.exports = {
     mode: 'development',
     plugins: [
         new HtmlWebpackPlugin({
-        template: path.join(__dirname, 'index.html'),
+        template: path.join(__dirname, './client/assets/index.html'),
         }),
     ],
     module: {
@@ -29,6 +29,11 @@ module.exports = {
                 }
             },
             {
+              test: /\.(ts|tsx)$/,
+              use: 'ts-loader',
+              exclude: /node_modules/,
+            },
+            {
                 test: /.(css|scss)$/,
                 use: [
                   'style-loader',
@@ -39,7 +44,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extension: ['.js', '.jsx', '.json'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     },
     devServer: {
         port: '8080',
