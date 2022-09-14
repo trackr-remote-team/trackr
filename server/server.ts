@@ -1,22 +1,26 @@
-const express = require('express');
-const app = express();
+import express, { Application, NextFunction, Request, Response } from "express";
 
-const PORT = 5137;
+const app: Application = express();
+
+import path from "path";
+
+
+const PORT: number = 5137;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response): void => {
   return res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 // app.use(express.static(path.resolve(__dirname, '../assets'))); however we set up our static files amend line
 
-app.use((req, res) => {
+app.use((req: Request, res: Response): Response<void> => {
   return res.sendStatus(404).send('Unknown Page');
 });
 
-app.use((err, req, res, next) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   const defaultErr = {
     log: 'Unknown Error',
     status: 500,
