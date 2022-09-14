@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack",
     "start": "nodemon ./server/server",
-    "dev": "concurrently \"NODE_ENV=development webpack serve --hot --open\" \"NODE_ENV=development nodemon server/server.js \""
+    "dev": "concurrently \"NODE_ENV=development webpack serve --hot --open\" \"NODE_ENV=development nodemon server/server.ts \""
   },
   "keywords": [],
   "author": "",
@@ -22,6 +22,7 @@
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.4.0",
     "redux": "^4.2.0",
+    "sqlite3": "^5.1.0",
     "webpack": "^5.74.0",
     "webpack-dev-server": "^4.11.0"
   },
@@ -38,6 +39,7 @@
     "eslint": "^8.23.1",
     "eslint-plugin-react": "^7.31.8",
     "file-loader": "^6.2.0",
+    "nodemon": "^2.0.19",
     "sass": "^1.54.9",
     "sass-loader": "^13.0.2",
     "style-loader": "^3.3.1",
