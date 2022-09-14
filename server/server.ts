@@ -1,4 +1,5 @@
 import express, { Application, NextFunction, Request, Response } from "express";
+import defaultError from "../types";
 
 const app: Application = express();
 
@@ -18,7 +19,7 @@ app.get('/', (req, res) => {
 
 
 app.use('*', (req: Request, res: Response): Response<void> => {
-  return res.sendStatus(404).send('Unknown Page');
+  return res.status(404).send('Unknown Page');
 });
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

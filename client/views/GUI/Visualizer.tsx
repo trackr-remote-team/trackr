@@ -40,7 +40,7 @@ const fitViewOptions: FitViewOptions = {
 
 
 //markdown
-function Flow() {
+export default function Visualizer() {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
 
