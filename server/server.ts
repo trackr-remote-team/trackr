@@ -1,4 +1,5 @@
 import express, { Application, NextFunction, Request, Response } from "express";
+const path = require('path');
 
 const app: Application = express();
 
@@ -10,13 +11,14 @@ const PORT: number = 5137;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/', (req: Request, res: Response): void => {
-  return res.sendFile(path.join(__dirname, '../index.html'));
+// app.use(express.static(path.join(__dirname, '../client/assets/index.html'))); //however we set up our static files amend line
+
+app.get('/', (req, res) => {
+  return res.sendFile(path.join(__dirname, '../client/assets/index.html'));
 });
 
-// app.use(express.static(path.resolve(__dirname, '../assets'))); however we set up our static files amend line
 
-app.use((req: Request, res: Response): Response<void> => {
+app.use('*', (req: Request, res: Response): Response<void> => {
   return res.sendStatus(404).send('Unknown Page');
 });
 
