@@ -1,5 +1,4 @@
 import express, { Application, NextFunction, Request, Response } from "express";
-const path = require('path');
 
 const app: Application = express();
 
@@ -23,14 +22,15 @@ app.use('*', (req: Request, res: Response): Response<void> => {
 });
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  const defaultErr = {
+  
+  const defaultErr: defaultError = {
     log: 'Unknown Error',
     status: 500,
-    message: { err: 'An Error Occurred' },
+    message: 'An Error Occurred',
   };
 
-  const errorObj = Object.assign({}, defaultErr, err);
-  return res.status(errorObj.status).json(errorObj.message.err);
+  const errorObj: defaultError & Error = Object.assign({}, defaultErr, err);
+  return res.status(errorObj.status).json(errorObj.message);
 });
 
 app.listen(PORT, () => console.log(`Listening on Port: ${PORT}...`));
