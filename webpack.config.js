@@ -45,6 +45,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+        fallback: {"crypto": false}
     },
     devServer: {
         port: '8080',
