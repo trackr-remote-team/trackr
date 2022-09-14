@@ -7,6 +7,7 @@ export default function App(): JSX.Element {
     <>
       <Routes>
         <Route index element={<LoginPage />} />
+        <Route path='/' element={<LoginPage />} />
       </Routes>
     </>
   );

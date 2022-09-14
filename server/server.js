@@ -1,18 +1,20 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 const PORT = 5137;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// app.use(express.static(path.join(__dirname, '../client/assets/index.html'))); //however we set up our static files amend line
+
 app.get('/', (req, res) => {
-  return res.sendFile(path.join(__dirname, '../index.html'));
+  return res.sendFile(path.join(__dirname, '../client/assets/index.html'));
 });
 
-// app.use(express.static(path.resolve(__dirname, '../assets'))); however we set up our static files amend line
 
-app.use((req, res) => {
+app.use('*', (req, res) => {
   return res.sendStatus(404).send('Unknown Page');
 });
 
