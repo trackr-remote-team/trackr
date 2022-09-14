@@ -1,9 +1,11 @@
 import React, {useRef} from 'react';
 import bcrypt from 'bcryptjs';
+import { redirect, useNavigate, Link } from 'react-router-dom';
 
 export default function LoginPage() {
     const emailInputRef = useRef<HTMLInputElement>();
     const passwordInputRef = useRef<HTMLInputElement>();
+    const navigate = useNavigate();
 
     const SignUpForm = (e) => {
         e.preventDefault();
@@ -28,6 +30,7 @@ export default function LoginPage() {
                 console.log('Password doesnt match');
             } else {
                 console.log('Password matches');
+                navigate("/dashboard");
             }
         })
     }
@@ -35,6 +38,7 @@ export default function LoginPage() {
     return (
         <>
         <h1>Login Page</h1>
+        <Link to="/dashboard">Dashboard</Link>
         <form>
             <input type="email" placeholder="email" ref={emailInputRef} style={{ padding: '15px', borderRadius: '10px', margin: '10px' }}/>
             <input type="password" placeholder="password" ref={passwordInputRef} style={{ padding: '15px', borderRadius: '10px', margin: '10px' }}/>
