@@ -2,12 +2,12 @@
   "name": "trackr",
   "version": "1.0.0",
   "description": "Job Application Tracking Visualizer",
-  "main": "index.tsx",
+  "main": "./client/index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack",
     "start": "nodemon ./server/server",
-    "dev": "concurrently \"NODE_ENV=development webpack serve --hot --open\" \"NODE_ENV=development nodemon server/server.js \""
+    "dev": "concurrently \"NODE_ENV=development webpack serve --hot --open\" \"NODE_ENV=development nodemon server/server.ts \""
   },
   "keywords": [],
   "author": "",
