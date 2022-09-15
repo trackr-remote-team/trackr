@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from "react-dom/client";
 import LoginPage from './views/LoginPage';
 import Dashboard from './views/Dashboard';
+import Visualizer from './views/GUI/Visualizer'
 import {
   BrowserRouter,
   createBrowserRouter,
