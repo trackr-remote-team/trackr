@@ -1,4 +1,4 @@
-import './styles.scss'
+import './styles.scss';
 import { useState, useCallback } from 'react';
 import ReactFlow, {
   addEdge,
@@ -12,6 +12,11 @@ import ReactFlow, {
   Connection,
 } from 'react-flow-renderer';
 
+const reactFlowStyle = {
+  width: '100%',
+  height: '100%',
+};
+
 //script
 
 //initial state of visualizer will be the nodes and edges
@@ -21,15 +26,51 @@ import ReactFlow, {
 
 //initial nodes will be empty
 const initialNodes: Node[] = [
-  { id: '1', data: { label: 'Engineer/Google' }, position: { x: 5, y: 5 } },
-  { id: '2', data: { label: 'Interview' }, position: { x: 5, y: 75 } },
-  { id: '3', data: { label: 'Comments: Resume has been submitted' }, position: { x: 5, y: 25 } },
-  { id: '4', data: { label: 'Comments: First office visit scheduled' }, position: { x: 75, y: 135 } },
+  {
+    id: '1',
+    data: { label: 'Engineer/Google id1' },
+    position: { x: -124, y: -396 },
+  },
+  { id: '2', data: { label: 'Interview id2' }, position: { x: -273, y: -338 } },
+  {
+    id: '3',
+    data: { label: 'Comments: Resume has been submitted id3' },
+    position: { x: -369, y: -266 },
+  },
+  {
+    id: '4',
+    data: { label: 'Comments: First office visit scheduled id 4' },
+    position: { x: -332, y: -428 },
+  },
 
+  {
+    id: '5',
+    data: { label: 'FrontEnd/AirBnb id 5' },
+    position: { x: 265, y: -241 },
+  },
+  { id: '6', data: { label: 'Interview id6' }, position: { x: 163, y: -175 } },
+  {
+    id: '7',
+    data: { label: 'Comments: Resume has been submitted id 7' },
+    position: { x: 394, y: -146 },
+  },
+  {
+    id: '8',
+    data: { label: 'Comments: Phone Screen scheduled id8' },
+    position: { x: 358, y: -28 },
+  },
 ];
 
 //initial edges will be empty
-const initialEdges: Edge[] = [{ id: `e1-2`, source: '1', target: '2' }, { id: `e2-3`, source: '2', target: '3' }, { id: `e3-4`, source: '3', target: '4' }];
+const initialEdges: Edge[] = [
+  { id: `e1-2`, source: '1', target: '2' },
+  { id: `e2-3`, source: '2', target: '3' },
+  { id: `e4-2`, source: '4', target: '2' },
+
+  { id: `e5-6`, source: '5', target: '6' },
+  { id: `e6-7`, source: '6', target: '7' },
+  { id: `e7-8`, source: '7', target: '8' },
+];
 
 const fitViewOptions: FitViewOptions = {
   padding: 0.2,
@@ -66,6 +107,7 @@ export default function Visualizer() {
         onConnect={onConnect}
         fitView
         fitViewOptions={fitViewOptions}
+        style={reactFlowStyle}
       />
     </div>
   );
