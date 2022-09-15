@@ -1,12 +1,49 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+// import { Routes, Route } from 'react-router-dom';
+import ReactDOM from "react-dom/client";
 import LoginPage from './views/LoginPage';
-import Visualizer from './views/GUI/Visualizer'
+import Dashboard from './views/Dashboard';
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Routes,
+} from "react-router-dom";
+
+
 export default function App(): JSX.Element {
+
+  // const router = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: <LoginPage />,
+  //     // children: [
+  //     //   {
+  //     //     path: "dashboard",
+  //     //     element: <LoginPage />,
+  //     //   }
+  //     // ]
+  //   },
+  //   {
+  //     path: "/dashboard",
+  //     element: <LoginPage />,
+  //   },
+  // ]);
+
   return (
-    <Routes>
-        <Route index element={<LoginPage />} />
+    <>
+
+      {/* <BrowserRouter> */}
+      <Routes>
         <Route path='/' element={<LoginPage />} />
-      </Routes>      
+        <Route path='/dashboard' element={<Dashboard />} />
+      </Routes> 
+      {/* </BrowserRouter> */}
+     
+      {/* <React.StrictMode> */}
+        {/* <RouterProvider router={router} /> */}
+      {/* </React.StrictMode> */}
+    </>
   );
 }

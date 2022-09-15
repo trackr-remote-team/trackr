@@ -58,7 +58,7 @@ export default function Visualizer() {
   );
 
   return (
-    <>
+    < div style={{ height: '100vh', width: '100vw' }}>
     <h1>Visualizer</h1>
     <ReactFlow
       nodes={nodes}
@@ -69,7 +69,7 @@ export default function Visualizer() {
       fitView
       fitViewOptions={fitViewOptions}
     />
-    </>
+    </div>
     
   )
 }
